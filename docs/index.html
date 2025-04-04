@@ -31,50 +31,6 @@
       li > p {
         margin-bottom: 0;
       }
-
-      /* Table responsive styling */
-      table {
-        width: 100%;
-        margin-bottom: 1rem;
-        border-collapse: collapse;
-        overflow-x: auto; /* Make it scrollable on small screens */
-        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-      }
-
-      /* Add borders to the table */
-      table,
-      table th,
-      table td {
-        border: 1px solid #dee2e6;
-      }
-
-      /* Style table headers with a light background */
-      table thead {
-        background-color: #f8f9fa;
-      }
-
-      table th {
-        padding: 0.75rem;
-        text-align: left;
-        vertical-align: bottom;
-      }
-
-      /* Style table data cells */
-      table td {
-        padding: 0.75rem;
-        vertical-align: top;
-      }
-
-      /* Smaller table cells */
-      table.table-sm td,
-      table.table-sm th {
-        padding: 0.25rem;
-      }
-
-      /* Add hover effect to table rows */
-      table tbody tr:hover {
-        background-color: #f1f1f1;
-      }
     </style>
   </head>
 
@@ -118,8 +74,8 @@
 <li>Unregelmäßige Verben (z. B. <code>sein</code>, <code>haben</code>, <code>gehen</code>) müssen auswendig gelernt werden.</li>
 </ul>
 <h3>Regelmäßige und unregelmäßige Verben im Präsens</h3>
-<table>
-<thead>
+<div class="table-responsive"><table class="table">
+<thead class="table-light">
 <tr>
 <th>Person</th>
 <th>leben</th>
@@ -205,7 +161,7 @@
 <td>lesen</td>
 <td>nehmen</td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <h3>Übungen:</h3>
 <ol>
 <li><p><strong>Freizeit:</strong> Schreibe 3 eigene Sätze mit <em>leben</em>, <em>heißen</em> oder <em>arbeiten</em>.

@@ -23,7 +23,19 @@ function generateAccordionContent(filename) {
 
   // Use marked to convert markdown to HTML (exclude the first h1 from markdown content)
   const markdownWithoutH1 = markdownContent.replace(/^# .+/m, "");
-  const htmlContent = marked(markdownWithoutH1);
+  let htmlContent = marked(markdownWithoutH1);
+
+  // Format tables
+  // - wrap all tables with the responsive div
+  htmlContent = htmlContent.replace(/<table([\s\S]*?)<\/table>/g, (match) => {
+    return `<div class="table-responsive">${match}</div>`; // Wrap the entire table inside <div class="table-responsive">
+  });
+  // - now add classes to the <table> element
+  htmlContent = htmlContent.replace(/<table([\s\S]*?)<\/table>/g, (match) => {
+    return match.replace("<table", '<table class="table"'); // Add classes to <table>
+  });
+  // - apply the class to <thead>
+  htmlContent = htmlContent.replace(/<thead>/g, '<thead class="table-light">'); // Add class to <thead>
 
   // Define accordion item template with dynamic content
   const accordionHtml = `
@@ -54,9 +66,7 @@ function buildHTML() {
   // Loop over each topic section in the markdownTopics object
   Object.keys(markdownTopics).forEach((sectionTitle) => {
     const sectionContent = markdownTopics[sectionTitle]
-      .map((section) =>
-        generateAccordionContent(section.filename, section.sectionTitle),
-      )
+      .map((section) => generateAccordionContent(section.filename))
       .join(""); // Create the accordion content for each section
 
     // Wrap the content in an <h2>
