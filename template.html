@@ -36,17 +36,11 @@
 
   <body>
     <div class="container">
-      <header class="text-center mb-5">
+      <header class="text-center mb-3">
         <h1>Deutsche Grammatik</h1>
-        <p class="lead">Themen, Regeln und Übungen von A1 bis B2</p>
+        <p class="lead mb-2">Themen, Regeln und Übungen von A1 bis B2</p>
+        <p>Klicke auf ein Thema!</p>
       </header>
-
-      <nav class="mb-2">
-        <h2>Inhaltsverzeichnis</h2>
-        <ul id="toc" class="list-group my-3">
-          <!-- Table of contents will be dynamically added here -->
-        </ul>
-      </nav>
 
       <main class="py-3">
         <!-- Content placeholder for the accordion sections -->
@@ -55,25 +49,5 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      // Generate automatic table of contents based on the accordion sections
-      document.addEventListener("DOMContentLoaded", function () {
-        const toc = document.getElementById("toc");
-        const accordionItems = document.querySelectorAll(".accordion-item");
-        accordionItems.forEach((item) => {
-          const heading = item.querySelector(".accordion-header button");
-          const sectionId = heading
-            .getAttribute("aria-controls")
-            .replace("collapse", "");
-          const li = document.createElement("li");
-          li.className = "list-group-item";
-          const a = document.createElement("a");
-          a.href = `#${sectionId}`;
-          a.textContent = heading.textContent;
-          li.appendChild(a);
-          toc.appendChild(li);
-        });
-      });
-    </script>
   </body>
 </html>

@@ -71,7 +71,7 @@ function buildHTML() {
 
     // Wrap the content in an <h2>
     finalContent += `
-      <h2 class="mt-5 mb-3">${sectionTitle}</h2>
+      <h2 class="section-title mt-5 mb-3">${sectionTitle}</h2>
       <div class="accordion">
         ${sectionContent}
       </div>
