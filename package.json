@@ -1,0 +1,17 @@
+{
+  "name": "my_german_notes",
+  "version": "0.0.1",
+  "lockfileVersion": 3,
+  "requires": true,
+  "author": "Davide Lanza",
+  "description": "My German notes... I like to have my notes tidy when I study. Feel free to spot any mistake if you find them useful as well!",
+  "main": "build.js",
+  "dependencies": {
+    "marked": "^15.0.7",
+    "prettier": "^3.5.3"
+  },
+  "scripts": {
+    "build": "node build.js",
+    "format": "prettier --write '**/*.{js,html,css,md}'",
+  }
+}
