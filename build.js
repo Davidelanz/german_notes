@@ -41,11 +41,11 @@ function generateAccordionContent(filename) {
   const accordionHtml = `
     <div class="accordion-item">
         <h2 class="accordion-header" id="heading${filename}">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${filename}" aria-expanded="true" aria-controls="collapse${filename}">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${filename}" aria-expanded="false" aria-controls="collapse${filename}">
               ${sectionTitle}
             </button>
         </h2>
-        <div id="collapse${filename}" class="accordion-collapse collapse show" aria-labelledby="heading${filename}" data-bs-parent="#accordion${filename}">
+        <div id="collapse${filename}" class="accordion-collapse collapse" aria-labelledby="heading${filename}" data-bs-parent="#accordion${filename}">
             <div class="accordion-body" style="font-family: 'Helvetica Neue', sans-serif;">
                 ${htmlContent}
             </div>
