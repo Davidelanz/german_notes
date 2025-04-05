@@ -8,6 +8,7 @@ const markdownDirectory = "topics";
 
 const markdownTopics = {
   "A1.1 (Anfänger - Grundlegende Einführungen und Alltagsleben)": [
+    { filename: "A1.1_der_die_das.md" },
     { filename: "A1.1_verbkonjugationimpraesens.md" },
     { filename: "A1.1_akkusativ.md" },
     { filename: "A1.1_akkusativ_mit_possessivartikeln.md" },

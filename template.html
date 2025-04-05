@@ -87,7 +87,58 @@
         </ul>
       </footer>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // General function to create a vocabulary game
+    function createVocabularyGame(gameId, words) {
+      let currentWordIndex = null;
+      let articleRevealed = false;
+
+      // Function to display a new random word
+      function displayNewWord() {
+        // Reset article revealed flag
+        articleRevealed = false;
+
+        // Pick a random word
+        const randomIndex = Math.floor(Math.random() * words.length);
+        const word = words[randomIndex];
+
+        // Split word into article and noun
+        const [article, noun] = word.split(" ");
+
+        // Set the wordDisplay element to show only the noun
+        document.getElementById(`${gameId}_wordDisplay`).textContent = noun;
+
+        // Store the current word index
+        currentWordIndex = randomIndex;
+      }
+
+      // Function to handle button click
+      function handleRevealClick() {
+        const word = words[currentWordIndex];
+        const [article, noun] = word.split(" ");
+
+        if (articleRevealed) {
+          // If article is already revealed, show a new random word
+          displayNewWord();
+        } else {
+          // Otherwise, reveal the article
+          document.getElementById(`${gameId}_wordDisplay`).textContent =
+            `${article} ${noun}`;
+          articleRevealed = true;
+        }
+      }
+
+      // Set up event listener for the reveal button
+      document
+        .getElementById(`${gameId}_revealButton`)
+        .addEventListener("click", handleRevealClick);
+
+      // Display the first word when the page loads
+      displayNewWord();
+    }
+  </script>
 </html>
