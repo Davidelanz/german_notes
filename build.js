@@ -14,6 +14,7 @@ const markdownTopics = {
     { filename: "A1.1_verbkonjugationimpraesens.md" },
     { filename: "A1.1_akkusativ.md" },
     { filename: "A1.1_akkusativ_mit_possessivartikeln.md" },
+    { filename: "A1.1_trennbareverben.md" },
   ],
   "A1.2 (Anfänger - Grundlegende Einführungen und Alltagsleben)": [
     { filename: "A1.2_verbformen.md" },
