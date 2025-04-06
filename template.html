@@ -92,53 +92,128 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    // General function to create a vocabulary game
     function createVocabularyGame(gameId, words) {
       let currentWordIndex = null;
       let articleRevealed = false;
 
-      // Function to display a new random word
       function displayNewWord() {
-        // Reset article revealed flag
         articleRevealed = false;
-
-        // Pick a random word
         const randomIndex = Math.floor(Math.random() * words.length);
         const word = words[randomIndex];
-
-        // Split word into article and noun
         const [article, noun] = word.split(" ");
 
-        // Set the wordDisplay element to show only the noun
-        document.getElementById(`${gameId}_wordDisplay`).textContent = noun;
+        const wordDisplayElement = document.getElementById(
+          `${gameId}_wordDisplay`,
+        );
+        if (!wordDisplayElement) {
+          console.warn(`Element with ID "${gameId}_wordDisplay" not found.`);
+          return;
+        }
 
-        // Store the current word index
+        wordDisplayElement.textContent = noun;
         currentWordIndex = randomIndex;
       }
 
-      // Function to handle button click
       function handleRevealClick() {
         const word = words[currentWordIndex];
         const [article, noun] = word.split(" ");
 
+        const wordDisplayElement = document.getElementById(
+          `${gameId}_wordDisplay`,
+        );
+        if (!wordDisplayElement) {
+          console.warn(`Element with ID "${gameId}_wordDisplay" not found.`);
+          return;
+        }
+
         if (articleRevealed) {
-          // If article is already revealed, show a new random word
           displayNewWord();
         } else {
-          // Otherwise, reveal the article
-          document.getElementById(`${gameId}_wordDisplay`).textContent =
-            `${article} ${noun}`;
+          wordDisplayElement.textContent = `${article} ${noun}`;
           articleRevealed = true;
         }
       }
 
-      // Set up event listener for the reveal button
-      document
-        .getElementById(`${gameId}_revealButton`)
-        .addEventListener("click", handleRevealClick);
+      const revealButton = document.getElementById(`${gameId}_revealButton`);
+      if (!revealButton) {
+        console.warn(
+          `Reveal button with ID "${gameId}_revealButton" not found.`,
+        );
+        return;
+      }
+      revealButton.addEventListener("click", handleRevealClick);
 
-      // Display the first word when the page loads
       displayNewWord();
+    }
+  </script>
+
+  <script>
+    function createVerbGame(gameId, verbs) {
+      let currentVerbIndex = null;
+      let formsRevealed = false;
+
+      function displayNewVerb() {
+        formsRevealed = false;
+        const randomIndex = Math.floor(Math.random() * verbs.length);
+        const verb = verbs[randomIndex];
+        const [infinitiv, prasens, prateritum, perfekt] = verb.split(",");
+
+        const infinitivEl = document.getElementById(`${gameId}_infinitiv`);
+        const prasensEl = document.getElementById(`${gameId}_prasens`);
+        const prateritumEl = document.getElementById(`${gameId}_prateritum`);
+        const perfektEl = document.getElementById(`${gameId}_perfekt`);
+
+        if (!infinitivEl || !prasensEl || !prateritumEl || !perfektEl) {
+          console.warn(
+            `One or more elements for gameId "${gameId}" not found.`,
+          );
+          return;
+        }
+
+        infinitivEl.textContent = infinitiv.trim();
+        prasensEl.textContent = "?";
+        prateritumEl.textContent = "?";
+        perfektEl.textContent = "?";
+
+        currentVerbIndex = randomIndex;
+      }
+
+      function handleRevealClick() {
+        const verb = verbs[currentVerbIndex];
+        const [infinitiv, prasens, prateritum, perfekt] = verb.split(",");
+
+        const prasensEl = document.getElementById(`${gameId}_prasens`);
+        const prateritumEl = document.getElementById(`${gameId}_prateritum`);
+        const perfektEl = document.getElementById(`${gameId}_perfekt`);
+
+        if (!prasensEl || !prateritumEl || !perfektEl) {
+          console.warn(
+            `One or more elements for gameId "${gameId}" not found when revealing.`,
+          );
+          return;
+        }
+
+        if (formsRevealed) {
+          displayNewVerb();
+        } else {
+          prasensEl.textContent = prasens.trim();
+          prateritumEl.textContent = prateritum.trim();
+          perfektEl.textContent = perfekt.trim();
+
+          formsRevealed = true;
+        }
+      }
+
+      const revealButton = document.getElementById(`${gameId}_revealButton`);
+      if (!revealButton) {
+        console.warn(
+          `Reveal button with ID "${gameId}_revealButton" not found.`,
+        );
+        return;
+      }
+      revealButton.addEventListener("click", handleRevealClick);
+
+      displayNewVerb();
     }
   </script>
 </html>

@@ -15,6 +15,13 @@ const markdownTopics = {
     { filename: "A1.1_akkusativ.md" },
     { filename: "A1.1_akkusativ_mit_possessivartikeln.md" },
   ],
+  "A1.2 (Anfänger - Grundlegende Einführungen und Alltagsleben)": [
+    { filename: "A1.2_verbformen.md" },
+  ],
+  "A2.1 (Elementarbereich - Komplexere Alltagssituationen)": [],
+  "A2.2 (Grundschule - Mehr Selbstvertrauen in alltäglichen Konversationen)": [
+    { filename: "A2.2_verbformen.md" },
+  ],
 };
 
 // Function to generate the HTML accordion content from the markdown file
